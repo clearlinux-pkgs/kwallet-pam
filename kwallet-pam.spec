@@ -5,14 +5,14 @@
 # Source0 file verified with key 0xD7574483BB57B18D (jr@jriddell.org)
 #
 Name     : kwallet-pam
-Version  : 5.25.5
-Release  : 70
-URL      : https://download.kde.org/stable/plasma/5.25.5/kwallet-pam-5.25.5.tar.xz
-Source0  : https://download.kde.org/stable/plasma/5.25.5/kwallet-pam-5.25.5.tar.xz
-Source1  : https://download.kde.org/stable/plasma/5.25.5/kwallet-pam-5.25.5.tar.xz.sig
+Version  : 5.26.0
+Release  : 71
+URL      : https://download.kde.org/stable/plasma/5.26.0/kwallet-pam-5.26.0.tar.xz
+Source0  : https://download.kde.org/stable/plasma/5.26.0/kwallet-pam-5.26.0.tar.xz
+Source1  : https://download.kde.org/stable/plasma/5.26.0/kwallet-pam-5.26.0.tar.xz.sig
 Summary  : No detailed summary available
 Group    : Development/Tools
-License  : BSD-3-Clause LGPL-2.1
+License  : BSD-3-Clause CC0-1.0 LGPL-2.1
 Requires: kwallet-pam-data = %{version}-%{release}
 Requires: kwallet-pam-lib = %{version}-%{release}
 Requires: kwallet-pam-license = %{version}-%{release}
@@ -64,15 +64,15 @@ services components for the kwallet-pam package.
 
 
 %prep
-%setup -q -n kwallet-pam-5.25.5
-cd %{_builddir}/kwallet-pam-5.25.5
+%setup -q -n kwallet-pam-5.26.0
+cd %{_builddir}/kwallet-pam-5.26.0
 
 %build
 export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1662500186
+export SOURCE_DATE_EPOCH=1665707004
 mkdir -p clr-build
 pushd clr-build
 export GCC_IGNORE_WERROR=1
@@ -88,10 +88,11 @@ make  %{?_smp_mflags}
 popd
 
 %install
-export SOURCE_DATE_EPOCH=1662500186
+export SOURCE_DATE_EPOCH=1665707004
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/kwallet-pam
 cp %{_builddir}/kwallet-pam-%{version}/LICENSES/BSD-3-Clause.txt %{buildroot}/usr/share/package-licenses/kwallet-pam/9950d3fdce1cff1f71212fb5abd31453c6ee2f8c || :
+cp %{_builddir}/kwallet-pam-%{version}/LICENSES/CC0-1.0.txt %{buildroot}/usr/share/package-licenses/kwallet-pam/82da472f6d00dc5f0a651f33ebb320aa9c7b08d0 || :
 cp %{_builddir}/kwallet-pam-%{version}/LICENSES/LGPL-2.1-or-later.txt %{buildroot}/usr/share/package-licenses/kwallet-pam/81b58c89ceef8e9f8bd5d00a287edbd15f9d3567 || :
 pushd clr-build
 %make_install
@@ -112,6 +113,7 @@ popd
 %files license
 %defattr(0644,root,root,0755)
 /usr/share/package-licenses/kwallet-pam/81b58c89ceef8e9f8bd5d00a287edbd15f9d3567
+/usr/share/package-licenses/kwallet-pam/82da472f6d00dc5f0a651f33ebb320aa9c7b08d0
 /usr/share/package-licenses/kwallet-pam/9950d3fdce1cff1f71212fb5abd31453c6ee2f8c
 
 %files services
