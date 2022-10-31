@@ -5,11 +5,11 @@
 # Source0 file verified with key 0xD7574483BB57B18D (jr@jriddell.org)
 #
 Name     : kwallet-pam
-Version  : 5.26.1
-Release  : 72
-URL      : https://download.kde.org/stable/plasma/5.26.1/kwallet-pam-5.26.1.tar.xz
-Source0  : https://download.kde.org/stable/plasma/5.26.1/kwallet-pam-5.26.1.tar.xz
-Source1  : https://download.kde.org/stable/plasma/5.26.1/kwallet-pam-5.26.1.tar.xz.sig
+Version  : 5.26.2
+Release  : 73
+URL      : https://download.kde.org/stable/plasma/5.26.2/kwallet-pam-5.26.2.tar.xz
+Source0  : https://download.kde.org/stable/plasma/5.26.2/kwallet-pam-5.26.2.tar.xz
+Source1  : https://download.kde.org/stable/plasma/5.26.2/kwallet-pam-5.26.2.tar.xz.sig
 Summary  : No detailed summary available
 Group    : Development/Tools
 License  : BSD-3-Clause CC0-1.0 LGPL-2.1
@@ -64,15 +64,15 @@ services components for the kwallet-pam package.
 
 
 %prep
-%setup -q -n kwallet-pam-5.26.1
-cd %{_builddir}/kwallet-pam-5.26.1
+%setup -q -n kwallet-pam-5.26.2
+cd %{_builddir}/kwallet-pam-5.26.2
 
 %build
 export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1666277588
+export SOURCE_DATE_EPOCH=1667238795
 mkdir -p clr-build
 pushd clr-build
 export GCC_IGNORE_WERROR=1
@@ -88,7 +88,7 @@ make  %{?_smp_mflags}
 popd
 
 %install
-export SOURCE_DATE_EPOCH=1666277588
+export SOURCE_DATE_EPOCH=1667238795
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/kwallet-pam
 cp %{_builddir}/kwallet-pam-%{version}/LICENSES/BSD-3-Clause.txt %{buildroot}/usr/share/package-licenses/kwallet-pam/9950d3fdce1cff1f71212fb5abd31453c6ee2f8c || :
