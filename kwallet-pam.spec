@@ -5,11 +5,11 @@
 # Source0 file verified with key 0xD7574483BB57B18D (jr@jriddell.org)
 #
 Name     : kwallet-pam
-Version  : 5.26.4
-Release  : 75
-URL      : https://download.kde.org/stable/plasma/5.26.4/kwallet-pam-5.26.4.tar.xz
-Source0  : https://download.kde.org/stable/plasma/5.26.4/kwallet-pam-5.26.4.tar.xz
-Source1  : https://download.kde.org/stable/plasma/5.26.4/kwallet-pam-5.26.4.tar.xz.sig
+Version  : 5.26.5
+Release  : 76
+URL      : https://download.kde.org/stable/plasma/5.26.5/kwallet-pam-5.26.5.tar.xz
+Source0  : https://download.kde.org/stable/plasma/5.26.5/kwallet-pam-5.26.5.tar.xz
+Source1  : https://download.kde.org/stable/plasma/5.26.5/kwallet-pam-5.26.5.tar.xz.sig
 Summary  : No detailed summary available
 Group    : Development/Tools
 License  : BSD-3-Clause CC0-1.0 LGPL-2.1
@@ -23,6 +23,9 @@ BuildRequires : buildreq-kde
 BuildRequires : extra-cmake-modules
 BuildRequires : kwallet-dev
 BuildRequires : libgcrypt-dev
+# Suppress stripping binaries
+%define __strip /bin/true
+%define debug_package %{nil}
 
 %description
 How kwallet-pam works:
@@ -64,31 +67,31 @@ services components for the kwallet-pam package.
 
 
 %prep
-%setup -q -n kwallet-pam-5.26.4
-cd %{_builddir}/kwallet-pam-5.26.4
+%setup -q -n kwallet-pam-5.26.5
+cd %{_builddir}/kwallet-pam-5.26.5
 
 %build
 export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1669814283
+export SOURCE_DATE_EPOCH=1673284069
 mkdir -p clr-build
 pushd clr-build
 export GCC_IGNORE_WERROR=1
 export AR=gcc-ar
 export RANLIB=gcc-ranlib
 export NM=gcc-nm
-export CFLAGS="$CFLAGS -O3 -ffat-lto-objects -flto=auto "
-export FCFLAGS="$FFLAGS -O3 -ffat-lto-objects -flto=auto "
-export FFLAGS="$FFLAGS -O3 -ffat-lto-objects -flto=auto "
-export CXXFLAGS="$CXXFLAGS -O3 -ffat-lto-objects -flto=auto "
+export CFLAGS="$CFLAGS -O3 -fdebug-types-section -femit-struct-debug-baseonly -ffat-lto-objects -flto=auto -g1 -gno-column-info -gno-variable-location-views -gz "
+export FCFLAGS="$FFLAGS -O3 -fdebug-types-section -femit-struct-debug-baseonly -ffat-lto-objects -flto=auto -g1 -gno-column-info -gno-variable-location-views -gz "
+export FFLAGS="$FFLAGS -O3 -fdebug-types-section -femit-struct-debug-baseonly -ffat-lto-objects -flto=auto -g1 -gno-column-info -gno-variable-location-views -gz "
+export CXXFLAGS="$CXXFLAGS -O3 -fdebug-types-section -femit-struct-debug-baseonly -ffat-lto-objects -flto=auto -g1 -gno-column-info -gno-variable-location-views -gz "
 %cmake ..
 make  %{?_smp_mflags}
 popd
 
 %install
-export SOURCE_DATE_EPOCH=1669814283
+export SOURCE_DATE_EPOCH=1673284069
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/kwallet-pam
 cp %{_builddir}/kwallet-pam-%{version}/LICENSES/BSD-3-Clause.txt %{buildroot}/usr/share/package-licenses/kwallet-pam/9950d3fdce1cff1f71212fb5abd31453c6ee2f8c || :
