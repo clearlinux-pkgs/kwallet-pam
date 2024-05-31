@@ -9,7 +9,7 @@
 #
 Name     : kwallet-pam
 Version  : 6.0.5
-Release  : 98
+Release  : 99
 URL      : https://download.kde.org/stable/plasma/6.0.5/kwallet-pam-6.0.5.tar.xz
 Source0  : https://download.kde.org/stable/plasma/6.0.5/kwallet-pam-6.0.5.tar.xz
 Source1  : https://download.kde.org/stable/plasma/6.0.5/kwallet-pam-6.0.5.tar.xz.sig
